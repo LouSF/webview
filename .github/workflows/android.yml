@@ -24,3 +24,12 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew assembleRelease
+      
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.3.3
+      with:
+          name: ljjy-apk
+          path: |
+            ${{github.workspace}}/app/build/outputs/apk/tencent/release/*.apk
+            ${{github.workspace}}/app/build/outputs/apk/xiaomi/release/*.apk
+          
